@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static const Color primary = Color(0xff39A552);
@@ -14,10 +15,11 @@ class AppTheme {
       titleLarge:
           TextStyle(color: navy, fontSize: 26.sp, fontWeight: FontWeight.w700),
       titleMedium:
-          TextStyle(color: white, fontSize: 22.sp, fontWeight: FontWeight.w400),
+          GoogleFonts.exo(color: white, fontSize: 22.sp, fontWeight: FontWeight.w400),
     ),
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: const AppBarTheme(
+      iconTheme: IconThemeData(color: white),
       backgroundColor: primary,
       titleTextStyle: TextStyle(
         fontSize: 22,
