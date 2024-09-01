@@ -14,8 +14,10 @@ class AppTheme {
     textTheme: TextTheme(
       titleLarge:
           TextStyle(color: navy, fontSize: 26.sp, fontWeight: FontWeight.w700),
-      titleMedium:
-          GoogleFonts.exo(color: white, fontSize: 22.sp, fontWeight: FontWeight.w400),
+      titleMedium: GoogleFonts.exo(
+          color: white, fontSize: 22.sp, fontWeight: FontWeight.w400),
+      titleSmall: GoogleFonts.poppins(
+          color: black, fontSize: 16.sp, fontWeight: FontWeight.w400),
     ),
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: const AppBarTheme(
