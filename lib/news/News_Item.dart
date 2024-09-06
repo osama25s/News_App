@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/models/news_response/article.dart';
+import 'package:news_app/models/news_response/news_response.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class NewsItem extends StatelessWidget {
-  const NewsItem({super.key});
-
+  const NewsItem(this.article, {super.key});
+  final Article article;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,8 +16,9 @@ class NewsItem extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.all(Radius.circular(6)),
-            child: Image.asset(
-              'assets/images/NewsTest.png',
+            child: Image.network(
+              article.urlToImage ??
+                  'https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg',
               width: double.infinity,
               height: 230.h,
               fit: BoxFit.cover,
@@ -25,7 +28,7 @@ class NewsItem extends StatelessWidget {
             height: 4,
           ),
           Text(
-            'BBCNews',
+            article.source?.name ?? '',
             style: Theme.of(context)
                 .textTheme
                 .titleSmall!
@@ -35,7 +38,7 @@ class NewsItem extends StatelessWidget {
             height: 2,
           ),
           Text(
-            'Why are footballs biggest clubs starting a new tournament?',
+            article.title ?? '',
             maxLines: 2,
             style: Theme.of(context).textTheme.titleSmall!.copyWith(
                   overflow: TextOverflow.ellipsis,
@@ -44,7 +47,7 @@ class NewsItem extends StatelessWidget {
           Align(
             alignment: AlignmentDirectional.centerEnd,
             child: Text(
-              timeago.format(DateTime.now()),
+              timeago.format(article.publishedAt ?? DateTime.now()),
               style: Theme.of(context)
                   .textTheme
                   .titleSmall!

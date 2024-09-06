@@ -11,36 +11,36 @@ class CategoriesGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     const List<CategoryModel> categories = [
       CategoryModel(
-        id: 'Sports',
+        id: 'sports',
         image: 'assets/images/ball.png',
         lable: 'Sports',
         color: Colors.red,
       ),
       CategoryModel(
-        id: 'Politics',
+        id: 'general',
         image: 'assets/images/Politics.png',
         lable: 'Politics',
         color: Color(0xff003E90),
       ),
       CategoryModel(
-        id: 'Health',
+        id: 'health',
         image: 'assets/images/health.png',
         lable: 'Health',
         color: Colors.pink,
       ),
       CategoryModel(
-          id: 'Bussines',
+          id: 'business',
           image: 'assets/images/bussines.png',
           lable: 'Bussines',
           color: Color(0xffCF7E48)),
       CategoryModel(
-        id: 'Environment',
+        id: 'science',
         image: 'assets/images/environment.png',
         lable: 'Environment',
         color: Colors.blue,
       ),
       CategoryModel(
-        id: 'Science',
+        id: 'science',
         image: 'assets/images/science.png',
         lable: 'Science',
         color: Colors.amber,
