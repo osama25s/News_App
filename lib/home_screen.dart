@@ -5,6 +5,7 @@ import 'package:news_app/categories/Category_Details.dart';
 import 'package:news_app/categories/Category_Model.dart';
 import 'package:news_app/categories/categories_gird.dart';
 import 'package:news_app/drawer/Drawer_Widget.dart';
+import 'package:news_app/news/News_Seach_Delegate.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,6 +32,19 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         appBar: AppBar(
           title: Text('News App'),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 4.0),
+              child: IconButton(
+                onPressed: () => showSearch(
+                    context: context, delegate: NewsSearchDelegate()),
+                icon: Icon(
+                  Icons.search,
+                  size: 32,
+                ),
+              ),
+            ),
+          ],
         ),
         body: categoryModel != null
             ? CategoryDetails(categoryModel!.id)
