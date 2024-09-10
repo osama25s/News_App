@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:news_app/api/api_service.dart';
-import 'package:news_app/app_theme.dart';
-import 'package:news_app/news/News_Item.dart';
-import 'package:news_app/widgets/Error_widget.dart';
-import 'package:news_app/widgets/Loading_Indicator.dart';
+import 'package:news_app/search/data/data_source/seaech_data_source.dart';
+import 'package:news_app/shared/app_theme.dart';
+import 'package:news_app/news/view/widgets/News_Item.dart';
+import 'package:news_app/shared/Error_widget.dart';
+import 'package:news_app/shared/Loading_Indicator.dart';
 
 class NewsSearchDelegate extends SearchDelegate {
   @override
@@ -43,7 +43,7 @@ class NewsSearchDelegate extends SearchDelegate {
       );
     }
     return FutureBuilder(
-      future: ApiService.getsearchNews(query),
+      future: SearchDataSource.getsearchNews(query),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadinIndicator();
@@ -71,7 +71,7 @@ class NewsSearchDelegate extends SearchDelegate {
       );
     }
     return FutureBuilder(
-      future: ApiService.getsearchNews(query),
+      future: SearchDataSource.getsearchNews(query),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const LoadinIndicator();

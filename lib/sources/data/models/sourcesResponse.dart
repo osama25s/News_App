@@ -1,4 +1,4 @@
-import 'package:news_app/models/Source.dart';
+import 'package:news_app/sources/data/models/Source.dart';
 
 class SourcesResponse {
   SourcesResponse({
