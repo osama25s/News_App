@@ -1,27 +1,21 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/shared/service_locator.dart';
-import 'package:news_app/sources/data/data_source/sources_Api_dataSourse.dart';
-import 'package:news_app/sources/data/models/Source.dart';
 import 'package:news_app/sources/data/repository/sources_repository.dart';
+import 'package:news_app/sources/view_model/sources_states.dart';
 
-class SourcesViewModel with ChangeNotifier {
-  final SourcesRepository sourcesRepository;
-  SourcesViewModel()
-      : sourcesRepository = SourcesRepository(ServiceLocator.sourcesDatasource);
-  List<Source> sources = [];
-  String? errormessage;
-  bool isloading = false;
-
+class SourcesViewModel extends Cubit<SourcesStates> {
+  late final SourcesRepository sourcesRepository;
+  SourcesViewModel() : super(SourcesInitial()) {
+    sourcesRepository = SourcesRepository(ServiceLocator.sourcesDatasource);
+  }
   Future<void> getSources(String categoryId) async {
-    isloading = true;
-    notifyListeners();
+    emit(LoadingGetSources());
     try {
-      sources = await sourcesRepository.getSources(categoryId);
+      final sources = await sourcesRepository.getSources(categoryId);
+      emit(SuccessGetSources(sources));
     } catch (error) {
-      print(error.toString());
-      errormessage = error.toString();
+      emit(ErrorGetSources(error.toString()));
     }
-    isloading = false;
-    notifyListeners();
   }
 }
+
